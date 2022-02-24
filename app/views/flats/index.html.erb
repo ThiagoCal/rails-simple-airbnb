@@ -1,0 +1,42 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#"><%= link_to "Home", flats_path %></a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+         <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="#"></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#"><%= link_to "Add a new flat", new_flat_path %></a>
+        </li>
+      </ul>
+      <form class="d-flex">
+        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success" type="submit">Search</button>
+      </form>
+    </div>
+  </div>
+</nav>
+
+<div class="d-flex flex-row bd-highlight mb-3">
+  <% @flats.each do |flat| %>
+  <div class="card d-flex justify-content-start" style="width: 18rem;">
+    <img class="card-img-top" src="..." alt="Card image cap">
+    <div class="card-body">
+      <h5 class="card-title"><%= link_to flat.name, flat_path(flat) %></h5>
+      <p class="card-text"><%= flat.description %></p>
+    </div>
+    <div class="card-body">
+      <a class="card-link"><%= link_to "More Info", flat_path(flat) %></a>
+      <a class="card-link"><%= link_to "Edit", edit_flat_path(flat) %></a>
+      <a class="card-link"><%= link_to "Delete",
+            flat_path(flat),
+            method: :delete,
+            data: { confirm: "Are you sure?" }, style:"display:block" %></a>
+    </div>
+  </div>
+  <% end %>
+</div>
